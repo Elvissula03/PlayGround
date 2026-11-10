@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#101510" />
+  <title>Rally Rush — Dirt, Drift, Repeat</title>
+  <link rel="icon" href="data:," />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-shell" id="gameShell">
+    <canvas id="game" aria-label="Rally Rush racing game"></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Rally Rush home"><span class="brand-mark">R</span><span>RALLY<span class="brand-light">RUSH</span></span></a>
+      <div class="stage-name"><span class="live-dot"></span><span id="stageLabel">PINE VALLEY</span><span class="stage-tag">STAGE 01</span></div>
+      <button class="icon-button" id="soundButton" aria-label="Toggle sound" title="Toggle sound"><span id="soundIcon">♪</span></button>
+    </header>
+    <section class="race-hud" id="raceHud" aria-live="polite">
+      <div class="hud-card lap-card"><span class="eyebrow">LAP</span><div class="lap-value"><b id="lapCurrent">1</b><span>/ 3</span></div><div class="lap-pips"><i class="active"></i><i></i><i></i></div></div>
+      <div class="hud-card timer-card"><span class="eyebrow">TIME</span><strong id="raceTime">00:00.00</strong><span class="best-time" id="bestTime">BEST —</span></div>
+      <div class="hud-card speed-card"><div class="speed-main"><strong id="speedValue">000</strong><span>KM/H</span></div><div class="speed-bar"><i id="speedFill"></i></div><span class="gear-label" id="gearLabel">GEAR 1</span></div>
+    </section>
+    <div class="checkpoint-toast" id="checkpointToast">CHECKPOINT <b>01</b></div>
+    <div class="countdown" id="countdown" aria-live="assertive"></div>
+    <aside class="controls-hint" id="controlsHint"><span class="keycap">W</span><span class="keycap">A</span><span class="keycap">S</span><span class="keycap">D</span><span class="hint-copy">DRIVE</span><span class="keycap space-key">SPACE</span><span class="hint-copy">HANDBRAKE</span></aside>
+    <section class="screen-panel welcome-panel" id="welcomePanel">
+      <div class="panel-kicker"><span>DIRT. SPEED. GLORY.</span><i></i> TIME TRIAL</div>
+      <h1>RALLY<br /><span>RUSH</span><em>!</em></h1>
+      <p class="panel-copy">Find your line. Hold your nerve.<br />Leave the rest in the dust.</p>
+      <div class="stage-picker" role="group" aria-label="Choose a rally stage">
+        <button class="stage-option selected" data-stage="0"><span class="stage-number">01</span><span><b>Pine Valley</b><small>FOREST · FLOWING</small></span><i>↗</i></button>
+        <button class="stage-option" data-stage="1"><span class="stage-number">02</span><span><b>Alpine Pass</b><small>SNOW · TECHNICAL</small></span><i>↗</i></button>
+        <button class="stage-option" data-stage="2"><span class="stage-number">03</span><span><b>Dust Canyon</b><small>DESERT · FAST</small></span><i>↗</i></button>
+      </div>
+      <button class="primary-button" id="startButton"><span>START YOUR RUN</span><b>→</b></button>
+      <div class="panel-foot"><span>3 LAPS · SOLO TIME TRIAL</span><span>BEST: <b id="menuBest">—</b></span></div>
+    </section>
+    <section class="screen-panel pause-panel hidden" id="pausePanel">
+      <div class="panel-kicker"><span>TAKE A BREATHER</span><i></i> PAUSED</div>
+      <h2>RACE<br /><span>PAUSED</span></h2>
+      <p class="panel-copy">Your stage is waiting right where you left it.</p>
+      <button class="primary-button" id="resumeButton"><span>BACK TO THE RACE</span><b>→</b></button>
+      <button class="text-button" id="restartButton">RESTART STAGE</button>
+    </section>
+    <section class="screen-panel finish-panel hidden" id="finishPanel">
+      <div class="panel-kicker"><span>CHECKERED FLAG</span><i></i> STAGE COMPLETE</div>
+      <h2 id="finishHeading">DUST<br /><span>SETTLED</span></h2>
+      <p class="panel-copy" id="finishMessage">A clean run from start to finish.</p>
+      <div class="result-time"><span>YOUR TIME</span><strong id="finalTime">00:00.00</strong><small id="recordLabel">PERSONAL BEST</small></div>
+      <button class="primary-button" id="againButton"><span>RACE AGAIN</span><b>↻</b></button>
+      <button class="text-button" id="changeStageButton">CHOOSE ANOTHER STAGE</button>
+    </section>
+    <button class="pause-button hidden" id="pauseButton" aria-label="Pause race">Ⅱ</button>
+    <div class="touch-controls" id="touchControls" aria-label="Touch driving controls">
+      <div class="touch-steer"><button data-control="left" aria-label="Steer left">‹</button><button data-control="right" aria-label="Steer right">›</button></div>
+      <div class="touch-pedals"><button class="drift-touch" data-control="drift" aria-label="Handbrake">DRIFT</button><button data-control="brake" aria-label="Brake">BRAKE</button><button class="gas-touch" data-control="gas" aria-label="Accelerate">GO <span>▲</span></button></div>
+    </div>
+    <footer class="bottom-note"><span>MADE FOR THE LONG WAY ROUND</span><span>↗ <b id="terrainLabel">THE FOREST IS CALLING</b></span></footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
